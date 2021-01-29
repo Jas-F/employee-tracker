@@ -1,6 +1,8 @@
-create database employeedb;
-use employeedb;
+-- create database
+create database employee;
+use employee;
 
+-- Create table  
 create table employee(
 
 id int auto_increment,
@@ -29,3 +31,6 @@ department_id int not null,
 
 primary key(id)
 );
+
+-- Insert Records.
+
