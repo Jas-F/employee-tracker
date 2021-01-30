@@ -1,16 +1,27 @@
 const mysql = require("mysql")
 const express = require("express");
-const bodyParser = require("body-parser");
 
-var app = express();
+const app = express();
 
-app.(bodyParser.json());
+// var mysqlConnection = mysql.createConnection({
+//     host : "localhost",
+//     user : "root",
+//     password : "password",
+//     database : "Employee",
+//     multipleStatements : true
+// });
 
-var mysqlConnection = mysql.createConnection({
-    host : "localhost",
-    user : "root",
-    password : "password",
-    database : "Edureka",
-    multipleStatements : true
+// mysqlConnection.connect((err) => {
+//         if (!err) {
+//             console.log("connected");
+//         }
+
+//         else {
+//             console.log("failed");
+//         }
+//     })
+
+app.listen('3000', () => {
+    console.log('started');
 });
     
