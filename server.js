@@ -6,5 +6,11 @@ var app = express();
 
 app.(bodyParser.json());
 
-var 
+var mysqlConnection = mysql.createConnection({
+    host : "localhost",
+    user : "root",
+    password : "password",
+    database : "Edureka",
+    multipleStatements : true
+});
     
