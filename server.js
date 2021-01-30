@@ -118,7 +118,6 @@ function addEmployee(){
             manageEmployees()
     })
 }
-// }
 
  function viewDepartment(){
     connection.query("SELECT * FROM department", function(err, res) {
@@ -145,11 +144,32 @@ function viewEmployees() {
         manageEmployees()
  })};
 
-// function updateRole(){
+function updateRoles(list){
 
-//     inquirer.prompt([{
-//         name: 'role',
-//         type: 'list'
-//     }]);
-// }
+    inquirer.prompt([{
+        name: 'role',
+        type: 'list',
+        message: "which role do you want to update",
+        choices: list
+    }, 
+    {
+        name: "title_",
+        message: "what is the title of the role"
+    },
+    {
+        name: "salary_",
+        message: "what is the role salary"
+    },
+    {
+        name: "department_",
+        message: "what is the department id"
+    }]).then(function(answers) {
+        connection.query("UPDATE roles SET ? WHERE?", [{
+            title: answers.title_,
+            salary: answers.salary_,
+            department_id: answers.department_,
+        }])
+        manageEmployees()
+    })};
+    
 manageEmployees()
