@@ -80,7 +80,12 @@ addEmployee(){
 }
 
 viewDepartment(){
-
+    console.table("Selecting");
+    Connection.query("select * From department", function(err, res) {
+        if (err) throw err;
+        console.table(res);
+        Connection.end();
+    });
 }
 
 viewRole(){
