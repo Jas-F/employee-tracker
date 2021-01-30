@@ -60,30 +60,40 @@ inquirer.prompt([
 function addDepartment(){
     inquirer.prompt([{
         name: "newDepartment",
-        message: "what department would you like to add",
+        message: "what department would you like to add"
     }]).then(function(answers){
         connection.query("INSERT INTO department SET ?", {
             name: answers.newDepartment,
         })
         manageEmployees()
-    });
+    })
 }
 
 function addRole(){
     inquirer.prompt([{
-        name: "newDepartment",
-        message: "what department would you like to add",
+        name: "title_",
+        message: "what is the title of the role"
+    },
+    {
+        name: "salary_",
+        message: "what is the role salary"
+    },
+    {
+        name: "department_",
+        message: "what is the department id"
     }]).then(function(answers){
-        connection.query("INSERT INTO roles", {
-            name: answers.newDepartment,
+        connection.query("INSERT INTO role SET ?", {
+            title: answers.title_,
+            salary: answers.salary_,
+            department_id: answers.department_,
         })
         manageEmployees()
-    });
+    })
 }
 
 function addEmployee(){
     inquirer.prompt([{
-        name: "newDepartment",
+        name: "ne",
         message: "what department would you like to add",
     }]).then(function(answers){
         connection.query("INSERT INTO employees", {
