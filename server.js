@@ -1,6 +1,7 @@
 const mysql = require("mysql");
 const express = require("express");
 const inquirer = require('inquirer');
+const app = express();
 const table = require('cli-table');
 // create connection 
 var Connection = mysql.createConnection({
@@ -16,42 +17,83 @@ Connection.connect((err) => {
             console.log("err");
         }
         console.log('connected');
+
+        manageEmployees()
     })
+
+app.listen('3000', () => {
+    console.log('started');
+});
     
 function manageEmployees() {
 inquirer.prompt([
     {   
         type: 'list',
-        name: 'manage'
+        name: 'manage',
         message: 'what would you like to do',
         choices: ['add departments', 'add roles', 'add employees', 'view departments', 'view roles', 'view employees', 'update employee roles']
     }
 ]).then(function (answer) {
     switch (answer.userInput) {
-        case 'add employee':
-            add();
+        case 'add departments':
+            addDepartment();
             break;
 
         case 'add roles':
-            add();
+            addRole();
+            break;
+
+        case 'add employees':
+            addEmployee();
             break;
 
         case 'view departments':
-            view();
+            viewDepartment();
             break;
         
         case 'view roles':
-            view();
+            viewRole();
             break;
             
         case 'view employees':
-            view();
+            viewEmployee();
             break;
 
         case 'update employee roles':
-            update();
+            updateRole();
             break;
 
     }
 })
 }
+
+addDepartment(){
+
+}
+
+addRole(){
+
+}
+
+addEmployee(){
+
+}
+
+viewDepartment(){
+
+}
+
+viewRole(){
+
+}
+
+viewEmployee(){
+
+}
+
+updateRole(){
+
+}
+
+
+
