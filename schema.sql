@@ -1,6 +1,7 @@
 -- create database
-create database employee_db;
-use employee_db;
+DROP DATABASE IF EXISTS employee
+create database employee;
+use employee;
 
 -- Create table  
 create table employees
@@ -28,3 +29,4 @@ salary decimal(10.3) null,
 department_id int not null,
 primary key(id)
 );
+
