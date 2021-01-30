@@ -57,30 +57,6 @@ inquirer.prompt([
 })
 }
 
-function viewEmployees() {
-    connection.query("SELECT * FROM employees", function (err, res) {
-        if (err) throw err;
-        console.table(res);
-        manageEmployees()
- })};
-
- function viewDepartment(){
-    connection.query("SELECT * FROM department", function(err, res) {
-        if (err) throw err;
-        console.table(res);
-        manageEmployees()
-       
-    });
-}
-
-function viewRole(){
-    connection.query("select * From role", function(err, res) {
-        if (err) throw err;
-        console.table(res);
-        manageEmployees()
-     
-    });
-}
 // function addDepartment(){
 //         inquirer.prompt([{
 //         name: "newDepartment",
@@ -114,39 +90,30 @@ function viewRole(){
 //     })
 // }
 
+ function viewDepartment(){
+    connection.query("SELECT * FROM department", function(err, res) {
+        if (err) throw err;
+        console.table(res);
+        manageEmployees()
+       
+    });
+}
 
-
-
-// function viewEmployees(){
-//     connection.query("select * From employees", function(err, res) {
-//         if (err) throw err;
-//         console.table(res);
+function viewRole(){
+    connection.query("select * From role", function(err, res) {
+        if (err) throw err;
+        console.table(res);
+        manageEmployees()
      
-//     });
-// }
+    });
+}
 
-// function viewEmployees(){
-//     connection.query("SELECT * FROM employees", function (res) {
-
-//         var table = new Table({
-//             //You can name these table heads chicken if you'd like. They are simply the headers for a table we're putting our data in
-//             head: ["id", "First_name", "Last_name", "role_id", "manager_id"],
-//             //These are just the width of the columns. Only mess with these if you want to change the cosmetics of our response
-//             colWidths: [10, 20, 15, 10, 10]
-//         });
-    
-//         // table is an Array, so you can `push`, `unshift`, `splice`
-//         for (var i = 0; i < res.length; i++) {
-//             table.push(
-//                 [res[i].id, res[i].First_name, res[i].Last_name, res[i].role_id, res[i].manager_id],
-//             );
-//         }
-//         // console.log(table.toString());
-//         console.table(res);
-//         // restart()
-//     });
-// }
-
+function viewEmployees() {
+    connection.query("SELECT * FROM employees", function (err, res) {
+        if (err) throw err;
+        console.table(res);
+        manageEmployees()
+ })};
 
 // function updateRole(){
 
