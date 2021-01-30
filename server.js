@@ -67,19 +67,26 @@ inquirer.prompt([
 })
 }
 
-addDepartment(){
+function addDepartment(){
+        inquirer.prompt([{
+        name: "newDepartment",
+        message: "what department would you like to add",
+    }]).then(function(answers){
+        Connection.query("INSERT INTO department SET ?", {
+            name: answers.newDepartment,
+        })
+    })
+}
+
+function addRole(){
 
 }
 
-addRole(){
+function addEmployee(){
 
 }
 
-addEmployee(){
-
-}
-
-viewDepartment(){
+function viewDepartment(){
     console.table("Selecting");
     Connection.query("select * From department", function(err, res) {
         if (err) throw err;
@@ -88,27 +95,29 @@ viewDepartment(){
     });
 }
 
-viewRole(){
+function viewRole(){
     console.table("Selecting");
-    Connection.query("select * From department", function(err, res) {
+    Connection.query("select * From role", function(err, res) {
         if (err) throw err;
         console.table(res);
         Connection.end();
     });
 }
 
-viewEmployee(){
+function viewEmployee(){
     console.table("Selecting");
-    Connection.query("select * From department", function(err, res) {
+    Connection.query("select * From employees", function(err, res) {
         if (err) throw err;
         console.table(res);
         Connection.end();
-    });
-}
-
-updateRole(){
 
 }
 
+function updateRole(){
 
+    inquirer.prompt([{
+        name: 'role',
+        type: 'list'
+    }])
 
+}
