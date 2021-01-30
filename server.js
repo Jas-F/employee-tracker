@@ -5,11 +5,7 @@ const Table = require('cli-table');
 var connection = mysql.createConnection({
     host: "localhost",
     port: 3306,
-
-    // Your username
     user: "root",
-
-    // Your password
     password: "password",
     database: "employee"
 });
@@ -17,10 +13,6 @@ var connection = mysql.createConnection({
 connection.connect(function (err) {
     if (err) throw err;
 });
-
-// app.listen('3000', () => {
-//     console.log('started');
-// });
     
 function manageEmployees() {
 inquirer.prompt([
@@ -53,11 +45,11 @@ inquirer.prompt([
             break;
             
         case 'view employees':
-            viewEmployee();
+            viewEmployees();
             break;
 
         case 'update employee roles':
-            updateRole();
+            updateRoles();
             break;
 
     }
@@ -115,8 +107,8 @@ inquirer.prompt([
 //     });
 // }
 
-function viewEmployee(){
-    connection.query("SELECT * FROM employees", function (err, res) {
+function viewEmployees() { 
+    connection.query("SELECT * FROM employees", function (res) {
 
         var table = new Table({
             //You can name these table heads chicken if you'd like. They are simply the headers for a table we're putting our data in
@@ -132,6 +124,7 @@ function viewEmployee(){
             );
         }
         console.log(table.toString());
+        // console.table(res);
         // restart()
     });
 }
