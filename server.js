@@ -12,7 +12,6 @@ var connection = mysql.createConnection({
 
 connection.connect(function (err) {
     if (err) throw err;
-    manageEmployees()
 });
     
 function manageEmployees() {
@@ -57,37 +56,42 @@ inquirer.prompt([
 })
 }
 
-// function addDepartment(){
-//         inquirer.prompt([{
-//         name: "newDepartment",
-//         message: "what department would you like to add",
-//     }]).then(function(answers){
-//         connection.query("INSERT INTO department", {
-//             name: answers.newDepartment,
-//         })
-//     })
-// }
 
-// function addRole(){
-//     inquirer.prompt([{
-//         name: "newDepartment",
-//         message: "what department would you like to add",
-//     }]).then(function(answers){
-//         connection.query("INSERT INTO roles", {
-//             name: answers.newDepartment,
-//         })
-//     })
-// }
+function addDepartment(){
+    inquirer.prompt([{
+        name: "newDepartment",
+        message: "what department would you like to add",
+    }]).then(function(answers){
+        connection.query("INSERT INTO department SET ?", {
+            name: answers.newDepartment,
+        })
+        manageEmployees()
+    });
+}
 
-// function addEmployee(){
-//     inquirer.prompt([{
-//         name: "newDepartment",
-//         message: "what department would you like to add",
-//     }]).then(function(answers){
-//         connection.query("INSERT INTO employees", {
-//             name: answers.newDepartment,
-//         })
-//     })
+function addRole(){
+    inquirer.prompt([{
+        name: "newDepartment",
+        message: "what department would you like to add",
+    }]).then(function(answers){
+        connection.query("INSERT INTO roles", {
+            name: answers.newDepartment,
+        })
+        manageEmployees()
+    });
+}
+
+function addEmployee(){
+    inquirer.prompt([{
+        name: "newDepartment",
+        message: "what department would you like to add",
+    }]).then(function(answers){
+        connection.query("INSERT INTO employees", {
+            name: answers.newDepartment,
+        })
+            manageEmployees()
+    });
+}
 // }
 
  function viewDepartment(){
@@ -122,4 +126,4 @@ function viewEmployees() {
 //         type: 'list'
 //     }]);
 // }
-// manageEmployees()
+manageEmployees()
