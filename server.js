@@ -93,14 +93,30 @@ function addRole(){
 
 function addEmployee(){
     inquirer.prompt([{
-        name: "ne",
-        message: "what department would you like to add",
+        name: "first",
+        message: "what is the first name"
+    },
+    {
+        name: "last",
+        message: "what is the last name",
+    },
+    {
+        name: "roleid",
+        message: "what is the role id",
+    },
+    {
+        name: "managerid",
+        message: "what is the manager id",
+    
     }]).then(function(answers){
-        connection.query("INSERT INTO employees", {
-            name: answers.newDepartment,
+        connection.query("INSERT INTO employees SET ?", {
+            First_name: answers.first,
+            Last_name: answers.last,
+            role_id: answers.roleid,
+            manager_id: answers.managerid,
         })
             manageEmployees()
-    });
+    })
 }
 // }
 
