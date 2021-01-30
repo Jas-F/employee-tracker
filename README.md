@@ -3,80 +3,60 @@ Architect and build a solution for managing a company's employees using node, in
 
 <br>
 
-===========
-![Image](live-site.png)
-
-<br>
-
 ==========
 
-## Create Base Class
+## Create tables using mysql tables
 
 ```
-class Employee {
-    constructor (name, id, email) {
-        this.name = name
-        this.id = id
-        this.email = email
-    }
+DROP DATABASE IF EXISTS employee
+create database employee;
+use employee;
 
-    getName() {
-        return this.name
-    }
+-- Create table  
+create table employees
+(
+id int auto_increment not null,
+First_name varchar(30) not null,
+Last_name varchar(30) not null,
+role_id int not null,
+manager_id int not null,
+primary key(id)
+);
 
-```
-<br>
 
-## Build Team
-
-```
-function buildTeam() {
-    const newPage = render(team);
-    fs.writeFile(outputPath, newPage, function(err){
-        if (err) {
-            console.log(err);
-        }
-    });
 ```
 <br>
 
-## Create Team
+## Add Inquirer Prompts
 
 ```
-function createTeam() {
-    inquirer.prompt([
-        {
-            type : 'list',
-            name : 'employeeChoice',
-            message : 'Which type of employee would you like to add',
-            choices : ['Manager','Engineer', 'Intern', 'No more member to add']
-        }
-    ]).then(answer => {
-        switch(answer.employeeChoice){
-            case 'Manager':
-                createManager()
-                break;
+inquirer.prompt([
+    {   
+        type: 'list',
+        name: 'manage',
+        message: 'what would you like to do',
+        choices: ['add departments', 'add roles', 'add employees', 'view departments', 'view roles', 'view employees', 'update employee roles']
+```
+<br>
 
-            case 'Engineer':
-                createEngineer()
-                break;
+## View existing tables
 
-            case 'Intern':
-                createIntern()
-                break;
-
-            default:
-                buildTeam()
-        }
+```
+function viewEmployees() {
+    connection.query("SELECT * FROM employees", function (err, res) {
+        if (err) throw err;
+        console.table(res);
+        manageEmployees()
+ })};
 ```
 
 <br>
 
 ## Built With
 
-* [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [Node]
+* [Mysql]
 
 
 ## Deployed Link
@@ -86,8 +66,6 @@ function createTeam() {
 ## License
 
 This project is licensed under the MIT License 
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
 
 ## Prerequisites
 
@@ -99,6 +77,7 @@ Google chrome,
 Bootstrap,
 JavaScript
 Node
+mysql
 ## Authors
 
 **Jasmine Franklin C: 301-332-2313 E: jasminer.franklin@gmail** 
