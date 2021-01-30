@@ -1,11 +1,11 @@
 const mysql = require("mysql");
 const express = require("express");
 const inquirer = require('inquirer');
-const app = express();
 const table = require('cli-table');
 // create connection 
 var Connection = mysql.createConnection({
     host : "localhost",
+    port: 3306,
     user : "root",
     password : "password",
     database : "Employee",
@@ -17,10 +17,6 @@ Connection.connect((err) => {
         }
         console.log('connected');
     })
-
-app.listen('3000', () => {
-    console.log('started');
-});
     
 function manageEmployees() {
 inquirer.prompt([
