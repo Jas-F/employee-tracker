@@ -57,6 +57,30 @@ inquirer.prompt([
 })
 }
 
+function viewEmployees() {
+    connection.query("SELECT * FROM employees", function (err, res) {
+        if (err) throw err;
+        console.table(res);
+        manageEmployees()
+ })};
+
+ function viewDepartment(){
+    connection.query("SELECT * FROM department", function(err, res) {
+        if (err) throw err;
+        console.table(res);
+        manageEmployees()
+       
+    });
+}
+
+function viewRole(){
+    connection.query("select * From role", function(err, res) {
+        if (err) throw err;
+        console.table(res);
+        manageEmployees()
+     
+    });
+}
 // function addDepartment(){
 //         inquirer.prompt([{
 //         name: "newDepartment",
@@ -90,23 +114,16 @@ inquirer.prompt([
 //     })
 // }
 
-function viewDepartment(){
-    connection.query("SELECT * FROM department", function(err, res) {
-        if (err) throw err;
-        console.table(res);
-        manageEmployees()
-       
-    });
-}
 
-function viewRole(){
-    connection.query("select * From role", function(err, res) {
-        if (err) throw err;
-        console.table(res);
+
+
+// function viewEmployees(){
+//     connection.query("select * From employees", function(err, res) {
+//         if (err) throw err;
+//         console.table(res);
      
-    });
-}
-
+//     });
+// }
 
 // function viewEmployees(){
 //     connection.query("SELECT * FROM employees", function (res) {
@@ -129,12 +146,7 @@ function viewRole(){
 //         // restart()
 //     });
 // }
- function viewEmployees() {
-    connection.query("SELECT * FROM employees", function (res) {
-        if (err) throw err;
-        console.table(res);
-        manageEmployees()
- })};
+
 
 // function updateRole(){
 
