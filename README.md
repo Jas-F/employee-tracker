@@ -55,8 +55,8 @@ function viewEmployees() {
 ## Built With
 
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-* [Node]
-* [Mysql]
+* [Node](https://nodejs.org/en/)
+* [Mysql](https://www.mysql.com/)
 
 
 ## Deployed Link
