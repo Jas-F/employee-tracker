@@ -27,15 +27,30 @@ primary key(id)
 ```
 <br>
 
-## Add Inquirer Prompts
+## Add to tables
 
 ```
-inquirer.prompt([
-    {   
-        type: 'list',
-        name: 'manage',
-        message: 'what would you like to do',
-        choices: ['add departments', 'add roles', 'add employees', 'view departments', 'view roles', 'view employees', 'update employee roles']
+function addRole(){
+    inquirer.prompt([{
+        name: "title_",
+        message: "what is the title of the role"
+    },
+    {
+        name: "salary_",
+        message: "what is the role salary"
+    },
+    {
+        name: "department_",
+        message: "what is the department id"
+    }]).then(function(answers){
+        connection.query("INSERT INTO role SET ?", {
+            title: answers.title_,
+            salary: answers.salary_,
+            department_id: answers.department_,
+        })
+        manageEmployees()
+    })
+}
 ```
 <br>
 
