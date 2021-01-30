@@ -21,9 +21,9 @@ Connection.connect((err) => {
         manageEmployees()
     })
 
-app.listen('3000', () => {
-    console.log('started');
-});
+// app.listen('3000', () => {
+//     console.log('started');
+// });
     
 function manageEmployees() {
 inquirer.prompt([
@@ -72,52 +72,66 @@ function addDepartment(){
         name: "newDepartment",
         message: "what department would you like to add",
     }]).then(function(answers){
-        Connection.query("INSERT INTO department SET ?", {
+        connection.query("INSERT INTO department", {
             name: answers.newDepartment,
         })
     })
 }
 
 function addRole(){
-
+    inquirer.prompt([{
+        name: "newDepartment",
+        message: "what department would you like to add",
+    }]).then(function(answers){
+        connection.query("INSERT INTO roles", {
+            name: answers.newDepartment,
+        })
+    })
 }
 
 function addEmployee(){
-
+    inquirer.prompt([{
+        name: "newDepartment",
+        message: "what department would you like to add",
+    }]).then(function(answers){
+        connection.query("INSERT INTO employees", {
+            name: answers.newDepartment,
+        })
+    })
 }
 
 function viewDepartment(){
     console.table("Selecting");
-    Connection.query("select * From department", function(err, res) {
+    connection.query("select * From department", function(err, res) {
         if (err) throw err;
         console.table(res);
-        Connection.end();
+        connection.end();
     });
 }
 
 function viewRole(){
     console.table("Selecting");
-    Connection.query("select * From role", function(err, res) {
+    Connection.query("select * From roles", function(err, res) {
         if (err) throw err;
         console.table(res);
-        Connection.end();
+        connection.end();
     });
 }
 
 function viewEmployee(){
     console.table("Selecting");
-    Connection.query("select * From employees", function(err, res) {
+    connection.query("select * From employees", function(err, res) {
         if (err) throw err;
         console.table(res);
-        Connection.end();
-
+        connection.end();
+    });
 }
+
 
 function updateRole(){
 
     inquirer.prompt([{
         name: 'role',
         type: 'list'
-    }])
-
+    }]);
 }
