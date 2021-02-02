@@ -1,6 +1,5 @@
 # employee-tracker
-Architect and build a solution for managing a company's employees using node, inquirer, and MySQL.
-
+create a burger logger with MySQL, Node, Express, Handlebars and a homemade ORM (yum!). Be sure to follow the MVC design pattern; use Node and MySQL to query and route data in your app, and Handlebars to generate your HTML.
 <br>
 
 ==========
@@ -54,15 +53,16 @@ function addRole(){
 ```
 <br>
 
-## View existing tables
+## Create Unordered List
 
 ```
-function viewEmployees() {
-    connection.query("SELECT * FROM employees", function (err, res) {
-        if (err) throw err;
-        console.table(res);
-        manageEmployees()
- })};
+<ul>
+      {{#each bookList}}
+      {{#if finished}}
+      {{> bookList/book-block finish=false}}
+      {{/if}}
+      {{/each}}
+    </ul>
 ```
 
 <br>
@@ -72,6 +72,7 @@ function viewEmployees() {
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [Node](https://nodejs.org/en/)
 * [Mysql](https://www.mysql.com/)
+* [NPMHandlebars](https://handlebarsjs.com/)
 
 
 ## Deployed Link
@@ -93,6 +94,7 @@ Bootstrap,
 JavaScript
 Node
 mysql
+NMP Handlebars
 ## Authors
 
 **Jasmine Franklin C: 301-332-2313 E: jasminer.franklin@gmail** 
